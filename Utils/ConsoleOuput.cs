@@ -2,7 +2,7 @@
 
 namespace RockPaperScissors.Utils
 {
-    public class IO
+    public class ConsoleOuput: IOuput
     {
         public void WriteLine(string str)
         {

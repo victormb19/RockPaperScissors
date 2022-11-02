@@ -5,7 +5,7 @@ namespace RockPaperScissors
 {
     public class Program
     {
-        static IO io = new IO();
+        static IOuput io = new ConsoleOuput();
 
         public static void Main(string[] args)
         {
