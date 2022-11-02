@@ -1,9 +1,12 @@
 ﻿using System;
+using RockPaperScissors.Utils;
 
 namespace RockPaperScissors
 {
     public class Program
     {
+        static IO io = new IO();
+
         public static void Main(string[] args)
         {
             Player p1 = new Player();
@@ -75,7 +78,7 @@ namespace RockPaperScissors
 
         private static void WriteLine(string str)
         {
-            Console.WriteLine(str);
+            io.WriteLine(str);
         }
 
     }
