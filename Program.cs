@@ -18,60 +18,66 @@ namespace RockPaperScissors
             // Game Loop
             do
             {
-                Console.WriteLine("***** Round: " +
+                WriteLine("***** Round: " +
                     roundsPlayed + " *********************\n");
-                Console.WriteLine("Number of Draws: " +
+                WriteLine("Number of Draws: " +
                     draw + "\n");
                 p1Choice = p1.PlayerChoice();
-                Console.WriteLine("Player 1: " + p1Choice +
+                WriteLine("Player 1: " + p1Choice +
                     "\t Player 1 Total Wins: " + p1Wins);
                 p2Choice = p2.PlayerChoice();
-                Console.WriteLine("Player 2: " + p2Choice +
+                WriteLine("Player 2: " + p2Choice +
                     "\t Player 2 Total Wins: " + p2Wins);
                 if ((p1Choice.Equals("rock")) && (p2Choice.Equals("paper")))
                 {
-                    Console.WriteLine("Player 2 Wins");
+                    WriteLine("Player 2 Wins");
                     p2Wins++;  // trying a couple different ways to get count to work
                 }
                 else if ((p1Choice.Equals("paper")) && (p2Choice.Equals("rock")))
                 {
                     p1Wins++;
-                    Console.WriteLine("Player 1 Wins");
+                    WriteLine("Player 1 Wins");
                 }
                 else if ((p1Choice.Equals("rock")) && (p2Choice.Equals("scissors")))
                 {
                     p1Wins = p1.SetWins();
-                    Console.WriteLine("Player 1 Wins");
+                    WriteLine("Player 1 Wins");
                 }
                 else if ((p1Choice.Equals("scissors")) && (p2Choice.Equals("rock")))
                 {
                     p2Wins = p2.SetWins();
-                    Console.WriteLine("Player 2 Wins");
+                    WriteLine("Player 2 Wins");
                 }
                 else if ((p1Choice.Equals("scissors")) && (p2Choice.Equals("paper")))
                 {
                     p1Wins = p1.SetWins();
-                    Console.WriteLine("Player 1 Wins");
+                    WriteLine("Player 1 Wins");
                 }
                 else if ((p1Choice.Equals("paper")) && (p2Choice.Equals("scissors")))
                 {
                     p2Wins = p2.SetWins();
-                    Console.WriteLine("Player 2 Wins");
+                    WriteLine("Player 2 Wins");
                 }
                 if (p1Choice == p2Choice)
                 {
                     draw++;
-                    Console.WriteLine("\n\t\t\t Draw \n");
+                    WriteLine("\n\t\t\t Draw \n");
                 }
                 roundsPlayed++;
                 if ((p1.GetWins() >= 3) || (p2.GetWins() >= 3))
                 {
                     gameWon = true;
-                    Console.WriteLine("GAME WON");
+                    WriteLine("GAME WON");
                 }
-                Console.WriteLine();
+                WriteLine(string.Empty);
             } while (gameWon != true);
         }
+
+        private static void WriteLine(string str)
+        {
+            Console.WriteLine(str);
+        }
+
     }
 
     public class Player
