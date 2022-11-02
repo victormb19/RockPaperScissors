@@ -78,7 +78,6 @@ namespace RockPaperScissors
     {
 
         public int wins;      // # of wins
-        int winTotal;
         Random random = new Random(DateTime.Now.Millisecond);
 
         /**
