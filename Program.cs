@@ -2,9 +2,9 @@
 
 namespace RockPaperScissors
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        public static void Main(string[] args)
         {
             Player p1 = new Player();
             Player p2 = new Player();
@@ -79,7 +79,7 @@ namespace RockPaperScissors
 
         public int wins;      // # of wins
         int winTotal;
-        Random random = new Random();
+        Random random = new Random(DateTime.Now.Millisecond);
 
         /**
          * Randomly choose rock, paper, or scissors
