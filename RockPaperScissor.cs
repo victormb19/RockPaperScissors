@@ -2,7 +2,7 @@
 
 namespace RockPaperScissors
 {
-    class RockPaperScissor
+    public class RockPaperScissor
     {
         IOuput io;
 
