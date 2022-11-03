@@ -19,8 +19,6 @@ namespace RockPaperScissors
             Player p2 = new Player("Player 2");
             int roundsPlayed = 0;    // Number of rounds played
             int draw = 0;
-            string p1Choice;
-            string p2Choice;
             // Game Loop
             do
             {
@@ -28,31 +26,31 @@ namespace RockPaperScissors
                     roundsPlayed + " *********************\n");
                 WriteLine("Number of Draws: " +
                     draw + "\n");
-                p1Choice = p1.PlayerChoice();
-                WriteLine(p1.GetName() + ": " + p1Choice +
+                p1.PlayerChoice();
+                WriteLine(p1.GetName() + ": " + p1.GetChoice() +
                     "\t " + p1.GetName() + " Total Wins: " + p1.GetWins());
-                p2Choice = p2.PlayerChoice();
-                WriteLine(p2.GetName() + ": " + p2Choice +
+                p2.PlayerChoice();
+                WriteLine(p2.GetName() + ": " + p2.GetChoice() +
                     "\t " + p2.GetName() + " Total Wins: " + p2.GetWins());
 
-                if (((p1Choice.Equals("paper")) && (p2Choice.Equals("rock"))) || (p1Choice.Equals("rock")) && (p2Choice.Equals("scissors")) || ((p1Choice.Equals("scissors")) && (p2Choice.Equals("paper"))))
+                if (((p1.GetChoice().Equals(Choice.paper)) && (p2.GetChoice().Equals(Choice.rock))) || (p1.GetChoice().Equals(Choice.rock)) && (p2.GetChoice().Equals(Choice.scissors)) || ((p1.GetChoice().Equals(Choice.scissors)) && (p2.GetChoice().Equals(Choice.paper))))
                 {
                     p1.SetWins();
                     WriteLine(p1.GetName() + " Wins");
                 }
-                else if (((p1Choice.Equals("rock")) && (p2Choice.Equals("paper"))) || (p1Choice.Equals("scissors")) && (p2Choice.Equals("rock")) || ((p1Choice.Equals("paper")) && (p2Choice.Equals("scissors"))))
+                else if (((p1.GetChoice().Equals(Choice.rock)) && (p2.GetChoice().Equals(Choice.paper))) || (p1.GetChoice().Equals(Choice.scissors)) && (p2.GetChoice().Equals(Choice.rock)) || ((p1.GetChoice().Equals(Choice.paper)) && (p2.GetChoice().Equals(Choice.scissors))))
                 {
                     p2.SetWins();
                     WriteLine(p2.GetName() + " Wins");
                 }
-                draw += Draw(p1Choice, p2Choice);
+                draw += Draw(p1.GetChoice(), p2.GetChoice());
                 roundsPlayed++;
                 WriteLine(string.Empty);
             } while (IsGameOver(p1, p2) != true);
             WriteLine("GAME WON");
         }
 
-        private int Draw(string choice, string otherChoice)
+        private int Draw(Choice choice, Choice otherChoice)
         {
             if (choice == otherChoice)
             {

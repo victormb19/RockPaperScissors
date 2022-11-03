@@ -6,6 +6,8 @@ namespace RockPaperScissors.Models
     {
         string name;
         int wins;
+        Choice choice;
+
         Random random = new Random(DateTime.Now.Millisecond);
 
         public Player(string name)
@@ -19,13 +21,15 @@ namespace RockPaperScissors.Models
             return name;
         }
 
-        /**
-         * Randomly choose rock, paper, or scissors
-         */
-        public string PlayerChoice()
+        public Choice GetChoice()
+        {
+            return choice;
+        }
+
+        public void PlayerChoice()
         {
             int randomChoice = random.Next(0,3);
-            return Enum.GetValues(typeof(Choice)).GetValue(randomChoice).ToString();
+            choice = (Choice)Enum.GetValues(typeof(Choice)).GetValue(randomChoice);
         }
 
         public void SetWins()
