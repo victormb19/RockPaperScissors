@@ -5,12 +5,13 @@ namespace RockPaperScissors.Models
     public class Player
     {
         string name;
-        public int wins;      // # of wins
+        int wins;
         Random random = new Random(DateTime.Now.Millisecond);
 
         public Player(string name)
         {
             this.name = name;
+            wins = 0;
         }
 
         public string GetName()
@@ -24,19 +25,17 @@ namespace RockPaperScissors.Models
         public string PlayerChoice()
         {
             int randomChoice = random.Next(0,3);
-            string choice = Enum.GetValues(typeof(Choice)).GetValue(randomChoice).ToString();
-            return choice;
+            return Enum.GetValues(typeof(Choice)).GetValue(randomChoice).ToString();
         }
 
-        public int SetWins()
+        public void SetWins()
         {
-            int winTotal = wins++;
-            return winTotal;
+            wins++;
         }
 
         public int GetWins()
         {
-            return (wins);
+            return wins;
         }
     }
 }
