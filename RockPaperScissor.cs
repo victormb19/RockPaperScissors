@@ -33,22 +33,13 @@ namespace RockPaperScissors
                 p2Choice = p2.PlayerChoice();
                 WriteLine(p2.GetName() + ": " + p2Choice +
                     "\t " + p2.GetName() + " Total Wins: " + p2.GetWins());
-                if ((p1Choice.Equals("rock")) && (p2Choice.Equals("paper")))
-                {
-                    p2.SetWins();
-                    WriteLine(p2.GetName() + " Wins");
-                }
-                else if ((p1Choice.Equals("paper")) && (p2Choice.Equals("rock")))
+
+                if (((p1Choice.Equals("paper")) && (p2Choice.Equals("rock"))) || (p1Choice.Equals("rock")) && (p2Choice.Equals("scissors")) || ((p1Choice.Equals("scissors")) && (p2Choice.Equals("paper"))))
                 {
                     p1.SetWins();
                     WriteLine(p1.GetName() + " Wins");
                 }
-                else if ((p1Choice.Equals("rock")) && (p2Choice.Equals("scissors")) || ((p1Choice.Equals("scissors")) && (p2Choice.Equals("paper"))))
-                {
-                    p1.SetWins();
-                    WriteLine(p1.GetName() + " Wins");
-                }
-                else if ((p1Choice.Equals("scissors")) && (p2Choice.Equals("rock")) || ((p1Choice.Equals("paper")) && (p2Choice.Equals("scissors"))))
+                else if (((p1Choice.Equals("rock")) && (p2Choice.Equals("paper"))) || (p1Choice.Equals("scissors")) && (p2Choice.Equals("rock")) || ((p1Choice.Equals("paper")) && (p2Choice.Equals("scissors"))))
                 {
                     p2.SetWins();
                     WriteLine(p2.GetName() + " Wins");
