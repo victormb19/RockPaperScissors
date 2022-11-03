@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RockPaperScissors
+namespace RockPaperScissors.Models
 {
     public class Player
     {
@@ -23,20 +23,8 @@ namespace RockPaperScissors
          */
         public string PlayerChoice()
         {
-            string choice = "";
-            int c = random.Next(0,3);
-            switch (c)
-            {
-                case 0:
-                    choice = ("rock");
-                    break;
-                case 1:
-                    choice = ("paper");
-                    break;
-                case 2:
-                    choice = ("scissors");
-                    break;
-            }
+            int randomChoice = random.Next(0,3);
+            string choice = Enum.GetValues(typeof(Choice)).GetValue(randomChoice).ToString();
             return choice;
         }
 

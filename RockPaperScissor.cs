@@ -1,4 +1,5 @@
-﻿using RockPaperScissors.Utils;
+﻿using RockPaperScissors.Models;
+using RockPaperScissors.Utils;
 
 namespace RockPaperScissors
 {
