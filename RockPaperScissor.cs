@@ -4,6 +4,7 @@ namespace RockPaperScissors
 {
     public class RockPaperScissor
     {
+        const int GAME_WON = 3;
         IOuput io;
 
         public RockPaperScissor(IOuput io)
@@ -15,7 +16,6 @@ namespace RockPaperScissors
         {
             Player p1 = new Player();
             Player p2 = new Player();
-            bool gameWon = false;
             int roundsPlayed = 0;    // Number of rounds played
             int p1Wins = p1.wins;
             int p2Wins = p2.wins;
@@ -71,13 +71,14 @@ namespace RockPaperScissors
                     WriteLine("\n\t\t\t Draw \n");
                 }
                 roundsPlayed++;
-                if ((p1.GetWins() >= 3) || (p2.GetWins() >= 3))
-                {
-                    gameWon = true;
-                    WriteLine("GAME WON");
-                }
                 WriteLine(string.Empty);
-            } while (gameWon != true);
+            } while (IsGameOver(p1, p2) != true);
+            WriteLine("GAME WON");
+        }
+
+        private bool IsGameOver(Player p1, Player p2)
+        {
+            return (p1.GetWins() >= GAME_WON) || (p2.GetWins() >= GAME_WON);
         }
 
         private void WriteLine(string str)
