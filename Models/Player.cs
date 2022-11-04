@@ -31,16 +31,14 @@ namespace RockPaperScissors.Models
             return name;
         }
 
+        public void SetChoice(Choice choice)
+        {
+            this.choice = choice;
+        }
+
         public Choice GetChoice()
         {
             return choice;
-        }
-
-        public void PlayerChoice()
-        {
-            var choiceValues = Enum.GetValues(typeof(Choice));
-            int randomChoice = random.Next(0, choiceValues.Length);
-            choice = (Choice)choiceValues.GetValue(randomChoice);
         }
 
         public void SetWins()

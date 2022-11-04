@@ -1,4 +1,5 @@
-﻿using RockPaperScissors.Models;
+﻿using RockPaperScissors.Controllers;
+using RockPaperScissors.Models;
 using RockPaperScissors.Utils;
 
 namespace RockPaperScissors
@@ -7,16 +8,19 @@ namespace RockPaperScissors
     {
         const int GAME_WON = 3;
         IOuput io;
+        IChoiceController choiceController;
 
-        public RockPaperScissor(IOuput io)
+
+        public RockPaperScissor(IOuput io, IChoiceController choiceController)
         {
             this.io = io;
+            this.choiceController = choiceController;
         }
 
         public void Play()
         {
-            Player p1 = new Player("Player 1");
-            Player p2 = new Player("Player 2");
+            Player player1 = new Player("Player 1");
+            Player player2 = new Player("Player 2");
             int roundsPlayed = 0;    // Number of rounds played
             int draw = 0;
             // Game Loop
@@ -26,19 +30,19 @@ namespace RockPaperScissors
                     roundsPlayed + " *********************\n");
                 WriteLine("Number of Draws: " +
                     draw + "\n");
-                p1.PlayerChoice();
-                WriteLine(p1.GetName() + ": " + p1.GetChoice() +
-                    "\t " + p1.GetName() + " Total Wins: " + p1.GetWins());
-                p2.PlayerChoice();
-                WriteLine(p2.GetName() + ": " + p2.GetChoice() +
-                    "\t " + p2.GetName() + " Total Wins: " + p2.GetWins());
+                player1.SetChoice(choiceController.GetChoice());
+                WriteLine(player1.GetName() + ": " + player1.GetChoice() +
+                    "\t " + player1.GetName() + " Total Wins: " + player1.GetWins());
+                player2.SetChoice(choiceController.GetChoice());
+                WriteLine(player2.GetName() + ": " + player2.GetChoice() +
+                    "\t " + player2.GetName() + " Total Wins: " + player2.GetWins());
 
-                RoundWinner(p1, p2);
-                RoundWinner(p2, p1);
-                draw += Draw(p1.GetChoice(), p2.GetChoice());
+                RoundWinner(player1, player2);
+                RoundWinner(player2, player1);
+                draw += Draw(player1.GetChoice(), player2.GetChoice());
                 roundsPlayed++;
                 WriteLine(string.Empty);
-            } while (IsGameOver(p1, p2) != true);
+            } while (IsGameOver(player1, player2) != true);
             WriteLine("GAME WON");
         }
 
