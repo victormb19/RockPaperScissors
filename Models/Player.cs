@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 
 namespace RockPaperScissors.Models
 {
@@ -10,10 +12,18 @@ namespace RockPaperScissors.Models
 
         Random random = new Random(DateTime.Now.Millisecond);
 
+        ReadOnlyDictionary<Choice, Choice> winnerChoice;
+
         public Player(string name)
         {
             this.name = name;
             wins = 0;
+            winnerChoice = new ReadOnlyDictionary<Choice, Choice>( new Dictionary<Choice, Choice>()
+            {
+                {Choice.paper, Choice.rock },
+                {Choice.rock, Choice.scissors },
+                {Choice.scissors, Choice.paper },
+            });
         }
 
         public string GetName()
@@ -28,8 +38,9 @@ namespace RockPaperScissors.Models
 
         public void PlayerChoice()
         {
-            int randomChoice = random.Next(0,3);
-            choice = (Choice)Enum.GetValues(typeof(Choice)).GetValue(randomChoice);
+            var choiceValues = Enum.GetValues(typeof(Choice));
+            int randomChoice = random.Next(0, choiceValues.Length);
+            choice = (Choice)choiceValues.GetValue(randomChoice);
         }
 
         public void SetWins()
@@ -41,5 +52,12 @@ namespace RockPaperScissors.Models
         {
             return wins;
         }
+
+        public bool IsWinnerChoice(Choice choice)
+        {
+            winnerChoice.TryGetValue(this.choice, out Choice looseChoice);
+            return choice == looseChoice;
+        }
+
     }
 }

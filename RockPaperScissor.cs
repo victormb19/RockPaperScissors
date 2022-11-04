@@ -44,7 +44,7 @@ namespace RockPaperScissors
 
         private void RoundWinner(Player player, Player enemy)
         {
-            if (((player.GetChoice().Equals(Choice.paper)) && (enemy.GetChoice().Equals(Choice.rock))) || (player.GetChoice().Equals(Choice.rock)) && (enemy.GetChoice().Equals(Choice.scissors)) || ((player.GetChoice().Equals(Choice.scissors)) && (enemy.GetChoice().Equals(Choice.paper))))
+            if (player.IsWinnerChoice(enemy.GetChoice()))
             {
                 player.SetWins();
                 WriteLine(player.GetName() + " Wins");
