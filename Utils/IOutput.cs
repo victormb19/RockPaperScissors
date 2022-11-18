@@ -1,6 +1,6 @@
 ﻿namespace RockPaperScissors.Utils
 {
-    public interface IOuput
+    public interface IOutput
     {
         void WriteLine(string str);
     }

@@ -2,8 +2,9 @@
 
 namespace RockPaperScissors.Controllers
 {
-    public interface IChoiceController
+    public interface IController
     {
-        Choice GetChoice();
+        void AddRoundsPlayed();
+        bool IsGameOver();
     }
 }

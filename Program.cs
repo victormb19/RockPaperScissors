@@ -1,13 +1,10 @@
-﻿using RockPaperScissors.Controllers;
-using RockPaperScissors.Utils;
-
-namespace RockPaperScissors
+﻿namespace RockPaperScissors
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            new RockPaperScissor(new ConsoleOuput(), new RandomChoiceController()).Play();
+            new RockPaperScissorStandalone().Play();
         }
     }
 }

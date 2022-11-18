@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Collections.ObjectModel;
 
 namespace RockPaperScissors.Models
@@ -9,9 +8,6 @@ namespace RockPaperScissors.Models
         string name;
         int wins;
         Choice choice;
-
-        Random random = new Random(DateTime.Now.Millisecond);
-
         ReadOnlyDictionary<Choice, Choice> winnerChoice;
 
         public Player(string name)

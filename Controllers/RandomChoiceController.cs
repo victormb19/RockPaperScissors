@@ -3,7 +3,7 @@ using RockPaperScissors.Models;
 
 namespace RockPaperScissors.Controllers
 {
-    public class RandomChoiceController: IChoiceController
+    public class RandomChoiceController: ChoiceController
     {
         Random random;
 
@@ -12,11 +12,11 @@ namespace RockPaperScissors.Controllers
             random = new Random(DateTime.Now.Millisecond);
         }
 
-        public Choice GetChoice()
+        public override void SetChoice()
         {
             var choiceValues = Enum.GetValues(typeof(Choice));
             int randomChoice = random.Next(0, choiceValues.Length);
-            return (Choice)choiceValues.GetValue(randomChoice);
+            game.SetPlayerChoice((Choice)choiceValues.GetValue(randomChoice));
         }
     }
 }
